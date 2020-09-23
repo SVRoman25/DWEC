@@ -7,3 +7,22 @@
 .change{
     background: green !important;
 }
+
+
+.gallery{
+    width: 600px;
+}
+    
+
+
+.gallery_item{
+    width: 150px;
+    height: auto;
+    border: 1px solid black;
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 20px;
+    font-size: 30px;
+    text-align: center;
+
+}
