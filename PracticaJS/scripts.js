@@ -18,12 +18,25 @@
     
     });
 
-    button.addEventListener('mousedown', () => {
+    /*otra opcion
+    button.addEventListener('mousedown', (e) => {  --> la e es una funcion de callback
     
-        console.log("Has pulsado la caja");
-    
-    });
+      e.preventDefault();
+      button.classList.replace("(id css red)", "(id css green)");
+  
+  });
 
+  element.querySelector = para recuperar cosas por css
+
+  */
+
+    button.addEventListener('mousedown', () => {
+      
+        console.log("Has pulsado la caja");
+     
+        
+    });
+ 
     button.addEventListener('mouseup', () => {
         
         console.log("Has soltado el boton izquierdo dentro de la caja");
@@ -35,21 +48,18 @@
     //Ejercicio 2
     tecla.addEventListener("keydown" ,() =>{
 
-        onsole.log("Has pulsado una tecla");
+      console.log("Has pulsado una tecla "+ e.key);
+      //Con key podemos saber que tecla pulsamos
 
     });
 
-    tecla.addEventListener("keyup" ,() =>{
+    tecla.addEventListener("keyup" ,(e) =>{
 
       console.log("Has soltado una tecla");
 
     });
 
-    tecla.addEventListener("keydown" ,(e) =>{
-
-      console.log(e.key); //Con key podemos saber que tecla pulsamos
-
-    });
+   
 
     //Ejercicio 3
     envi.addEventListener("click", (d)=>{
