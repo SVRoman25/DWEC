@@ -1,0 +1,103 @@
+body{
+    text-align: center;
+}
+#cuerpo{
+    margin-top: 10px;
+    width:1200px;
+    height: 500px;
+    
+   
+
+}
+
+#izquierda{
+    margin-top: 22px;
+    margin-left: 0;
+    border: 1px solid blue;
+    width: 40%;
+    height: 80%;
+    margin-left: 0;
+    position: absolute;
+
+}
+
+#derecha{
+    margin-top: 22px;
+    border: 1px solid crimson;
+    width: 40%;
+    height: 80%;
+    margin-left:41%;
+    position: absolute;
+    
+    
+}
+
+p.jugador{
+    margin-top: 0;
+    float: left;
+    border: 1px solid black;
+    height: auto;
+    width: auto;
+    font-size: 10px;
+    margin-left: 0;
+    position: absolute;
+}
+p.banca{
+    margin-top: 0;
+    float: left;
+    border: 1px solid black;
+    height: auto;
+    width: auto;
+    font-size: 10px;
+    margin-left: 41%;
+    position: absolute;
+}
+
+#plantarse{
+    width:auto ;
+    float: left;
+    font-size: 12px;
+    margin-left: 15%;
+
+}
+
+img#jugador{
+   
+    float: left;
+}
+
+img#volteado{
+    margin-top:8%;
+}
+
+#guardadas{
+    position: absolute;
+    width: auto;
+    height: auto;
+    float: left;
+    margin-top: 20%;
+  
+}
+
+#guardabanco{
+    border: 1px solid red;
+    position: absolute;
+    width: auto;
+    height: auto;
+    float: right;
+    margin-top: 20%;
+
+}
+
+#reinicio{
+    float: left;
+    background-color: green;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+p{
+    margin-top: 40px;
+}
+
+
