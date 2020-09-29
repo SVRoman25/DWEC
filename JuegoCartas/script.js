@@ -74,34 +74,23 @@ let arrayCartas=[carta1,carta2,carta3,carta4,carta5,carta6,carta7,carta8,carta9,
 
 
 
+const sacarCarta = () =>{
+   
+        let numRandow=Math.floor(Math.random() * (41 - 0 + 1));
 
-const sacarCarta = ()=>{
-    const juga = document.getElementById("jugador");
-    
-    juga.addEventListener("click", (e) => {
-        e.preventDefault();
-        
-        let numRandow=Math.floor(Math.random() * (41 - 0) +0);
-
+        console.log(numRandow);
         let getImg=arrayCartas[numRandow].getImagen();
 
         document.getElementById("volteado").src=getImg;
               
-        let tabla = document.getElementById("guardadas");
+        let divGuardadas = document.getElementById("guardadas");
+        let reinicio=document.getElementById("prueba");
 
         let img=document.createElement("img");
-        let td =document.createElement("td");
         img.setAttribute("src",getImg);
         img.setAttribute("width","100");
         img.setAttribute("height","140");
-    
-        td.appendChild(img)
-        tabla.appendChild(td);
-
-        
-
-    }); 
-    
+        divGuardadas.insertBefore(img, reinicio);
 
 }
 

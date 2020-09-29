@@ -4,28 +4,26 @@ body{
 #cuerpo{
     margin-top: 10px;
     width:1200px;
-    height: 500px;
-    
-   
-
+    height:auto;
 }
 
 #izquierda{
-    margin-top: 22px;
+    margin-top: 1.7%;
     margin-left: 0;
     border: 1px solid blue;
     width: 40%;
-    height: 80%;
+    height: auto;
     margin-left: 0;
     position: absolute;
+
 
 }
 
 #derecha{
-    margin-top: 22px;
-    border: 1px solid crimson;
+    margin-top: 1.7%;
+    border: 1px solid green;
     width: 40%;
-    height: 80%;
+    height: auto;
     margin-left:41%;
     position: absolute;
     
@@ -62,8 +60,8 @@ p.banca{
 }
 
 img#jugador{
-   
     float: left;
+     
 }
 
 img#volteado{
@@ -71,33 +69,37 @@ img#volteado{
 }
 
 #guardadas{
-    position: absolute;
-    width: auto;
+    position: relative;
+    width: 80%;
     height: auto;
     float: left;
-    margin-top: 20%;
+    margin-top: 10%;
   
 }
 
-#guardabanco{
-    border: 1px solid red;
-    position: absolute;
-    width: auto;
-    height: auto;
-    float: right;
-    margin-top: 20%;
-
-}
 
 #reinicio{
     float: left;
     background-color: green;
-    margin-top: 0;
-    margin-bottom: 40px;
+    margin-top:5%;
+    margin-bottom: 7%;
+
 }
 
 p{
-    margin-top: 40px;
+    margin-bottom: 7%;
+    margin-top: 5.5%;
+    float: left;
+}
+
+
+#guardadasBanco{
+    position: relative;
+    width: 80%;
+    height: auto;
+    float: left;
+    margin-top: 10%;
+      
 }
 
 
