@@ -73,16 +73,30 @@ let arrayCartas=[carta1,carta2,carta3,carta4,carta5,carta6,carta7,carta8,carta9,
   
 
 
+var total=0;
+var arrayPuntos=[];
 
-const sacarCarta = () =>{
-   
+const sacar = document.getElementById("jugador");
+
+    sacar.addEventListener("click", (e) =>{
+        e.preventDefault();
+
+        //Obtenemos el numero randow
         let numRandow=Math.floor(Math.random() * (41 - 0 + 1));
-
-        console.log(numRandow);
+       
+        //Sacamos con el numero randow los puntos y el src de la imagen
         let getImg=arrayCartas[numRandow].getImagen();
+        let puntos=arrayCartas[numRandow].getPoint();
 
+        //Creamos un array de puntos 
+        
+        arrayPuntos.push(puntos);
+
+        //Cambiamos el src de la imagen del html por la obtenida
         document.getElementById("volteado").src=getImg;
               
+        //Aqui creamos la imagen y con unos atributos y se lo añadimos 
+        //al div donde apareceran las cartas que han salido
         let divGuardadas = document.getElementById("guardadas");
         let reinicio=document.getElementById("prueba");
 
@@ -92,5 +106,54 @@ const sacarCarta = () =>{
         img.setAttribute("height","140");
         divGuardadas.insertBefore(img, reinicio);
 
+        //Borramos la carta que nos ha salido
+        arrayCartas.splice(numRandow,1);
+
+        
+});
+
+const plantarse=document.getElementById("plantarse");
+
+//Si hacemos click en plantarse suma los puntos
+plantarse.addEventListener("click", (d) => {
+    d.preventDefault();
+    
+   for(let i=0; i<arrayPuntos.length; i++){
+        total=total+arrayPuntos[i];
+   }
+
+   console.log(total);
+   
+});
+
+
+
+
+
+const sacarCartaBanco = () =>{
+    
+    let numRandow=Math.floor(Math.random() * (41 - 0 + 1));
+
+    console.log(numRandow);
+    let getImg=arrayCartas[numRandow].getImagen();
+
+    document.getElementById("volBanco").src=getImg;
+          
+    let divGuardadas = document.getElementById("guardadasBanco");
+    let reinicio=document.getElementById("pruebaBanco");
+
+    let img=document.createElement("img");
+    img.setAttribute("src",getImg);
+    img.setAttribute("width","100");
+    img.setAttribute("height","140");
+    divGuardadas.insertBefore(img, reinicio);
+
+    arrayCartas.splice(numRandow,1);
+    
 }
+
+ 
+
+
+
 
