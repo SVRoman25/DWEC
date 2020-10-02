@@ -30,23 +30,23 @@ body{
     
 }
 
-p.jugador{
+#puntosJugador{
     margin-top: 0;
     float: left;
     border: 1px solid black;
     height: auto;
     width: auto;
-    font-size: 10px;
+    font-size: 13px;
     margin-left: 0;
     position: absolute;
 }
-p.banca{
+#puntosBanca{
     margin-top: 0;
     float: left;
     border: 1px solid black;
     height: auto;
     width: auto;
-    font-size: 10px;
+    font-size: 13px;
     margin-left: 41%;
     position: absolute;
 }
@@ -61,7 +61,16 @@ p.banca{
 
 img#jugador{
     float: left;
+    pointer-events: auto;
      
+}
+
+#juBanco{
+    float: left;
+}
+
+#volBanco{
+    margin-top: 8%;
 }
 
 img#volteado{

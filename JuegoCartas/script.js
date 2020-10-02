@@ -64,7 +64,7 @@ const carta38 = new Cartas("12 Copas", imagen.src="imagenes/imagenes/10Copas.jpg
 const carta39 = new Cartas("12 Oros", imagen.src="imagenes/imagenes/10Oros.jpg",0.5 );
 const carta40 = new Cartas("12 Espadas", imagen.src="imagenes/imagenes/10Espadas.jpg",0.5 );
 
-let arrayCartas=[carta1,carta2,carta3,carta4,carta5,carta6,carta7,carta8,carta9,carta10,carta11,carta12,carta13,carta14,carta15,carta16,carta17,carta18,carta19,carta20,
+var arrayCartas=[carta1,carta2,carta3,carta4,carta5,carta6,carta7,carta8,carta9,carta10,carta11,carta12,carta13,carta14,carta15,carta16,carta17,carta18,carta19,carta20,
     carta21,carta22,carta23,carta24,carta25,carta26,carta27,carta28,carta29,carta30,carta31,carta32,carta33,carta34,carta35,carta36,carta37,carta38,carta39,carta40];
 
 
@@ -75,21 +75,40 @@ let arrayCartas=[carta1,carta2,carta3,carta4,carta5,carta6,carta7,carta8,carta9,
 
 var total=0;
 var arrayPuntos=[];
-
+var conta=40;
+var arrayRepetidos=[];
+var salir=false;
+var next=0;
 const sacar = document.getElementById("jugador");
 
-    sacar.addEventListener("click", (e) =>{
+sacar.addEventListener("click", (e) =>{
         e.preventDefault();
 
         //Obtenemos el numero randow
-        let numRandow=Math.floor(Math.random() * (41 - 0 + 1));
+        let numRandow=Math.floor(Math.random() * (conta- 0 + 1));
        
         //Sacamos con el numero randow los puntos y el src de la imagen
-        let getImg=arrayCartas[numRandow].getImagen();
-        let puntos=arrayCartas[numRandow].getPoint();
+        
+        for(let i=0; i<arrayRepetidos.length && salir!=true; i++){
+            
+            if(arrayRepetidos[i].getName()==arrayCartas[numRandow].getName()){
+               let nuevoNum=Math.floor(Math.random() * (conta - 0 + 1));
+                var getImg=arrayCartas[nuevoNum].getImagen();
+                var puntos=arrayCartas[nuevoNum].getPoint();
+                
+                salir=true;
+        }
+    }
+
+        if(salir==false){
+            var getImg=arrayCartas[numRandow].getImagen();
+            var puntos=arrayCartas[numRandow].getPoint();
+        }
+
+        conta--;
+        arrayRepetidos.push(arrayCartas[numRandow]);
 
         //Creamos un array de puntos 
-        
         arrayPuntos.push(puntos);
 
         //Cambiamos el src de la imagen del html por la obtenida
@@ -109,20 +128,36 @@ const sacar = document.getElementById("jugador");
         //Borramos la carta que nos ha salido
         arrayCartas.splice(numRandow,1);
 
+
+        
+        for(let i=next; i<arrayPuntos.length; i++){
+            
+            total=total+arrayPuntos[i];
+
+        }
+        next++;
+  
+        document.getElementById("puntosJugador").innerHTML="Total jugador:"+total;
+      
+        if(total>7.5){
+         document.getElementById("ganador").innerHTML="Ganador: Banca";
+         let desactivar=document.getElementById("jugador");
+        desactivar.style.pointerEvents="none";
+    
+
+        }
         
 });
 
 const plantarse=document.getElementById("plantarse");
 
-//Si hacemos click en plantarse suma los puntos
-plantarse.addEventListener("click", (d) => {
-    d.preventDefault();
-    
-   for(let i=0; i<arrayPuntos.length; i++){
-        total=total+arrayPuntos[i];
-   }
+    //Si hacemos click en plantarse suma los puntos
+    plantarse.addEventListener("click", (d) => {
+      d.preventDefault();
 
-   console.log(total);
+      let desactivar=document.getElementById("jugador");
+      desactivar.style.pointerEvents="none";
+    
    
 });
 
