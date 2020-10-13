@@ -46,7 +46,7 @@
 
 
     //Ejercicio 2
-    tecla.addEventListener("keydown" ,() =>{
+    tecla.addEventListener("keydown" ,(e) =>{
 
       console.log("Has pulsado una tecla "+ e.key);
       //Con key podemos saber que tecla pulsamos

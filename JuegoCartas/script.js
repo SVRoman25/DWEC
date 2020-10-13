@@ -73,13 +73,21 @@ var arrayCartas=[carta1,carta2,carta3,carta4,carta5,carta6,carta7,carta8,carta9,
   
 
 
-var total=0;
-var arrayPuntos=[];
-var conta=40;
-var arrayRepetidos=[];
-var salir=false;
-var next=0;
+let total=0;
+let arrayPuntos=[];
+let arrayPuntosBanco=[];
+let conta=40;
+let arrayRepetidos=[];
+let salir=false;
+let next=0;
+let getImg;
+let puntos;
+let siguiente=0;
+const plantarse=document.getElementById("plantarse");
 const sacar = document.getElementById("jugador");
+var boleano=false;
+let desactivar=document.getElementById("jugador");
+let activarBanco=document.getElementById("juBanco");
 
 sacar.addEventListener("click", (e) =>{
         e.preventDefault();
@@ -87,22 +95,22 @@ sacar.addEventListener("click", (e) =>{
         //Obtenemos el numero randow
         let numRandow=Math.floor(Math.random() * (conta- 0 + 1));
        
-        //Sacamos con el numero randow los puntos y el src de la imagen
-        
+        //Quitamos las cartas repetidas hacemos un blucle que recorra un array de cartas repetidas
+        // y el array de cartas normales, si el nombre de ambas cartas coincide crea otro numero randow
         for(let i=0; i<arrayRepetidos.length && salir!=true; i++){
             
             if(arrayRepetidos[i].getName()==arrayCartas[numRandow].getName()){
                let nuevoNum=Math.floor(Math.random() * (conta - 0 + 1));
-                var getImg=arrayCartas[nuevoNum].getImagen();
-                var puntos=arrayCartas[nuevoNum].getPoint();
+                getImg=arrayCartas[nuevoNum].getImagen();
+                puntos=arrayCartas[nuevoNum].getPoint();
                 
                 salir=true;
         }
     }
 
         if(salir==false){
-            var getImg=arrayCartas[numRandow].getImagen();
-            var puntos=arrayCartas[numRandow].getPoint();
+             getImg=arrayCartas[numRandow].getImagen();
+             puntos=arrayCartas[numRandow].getPoint();
         }
 
         conta--;
@@ -141,53 +149,118 @@ sacar.addEventListener("click", (e) =>{
       
         if(total>7.5){
          document.getElementById("ganador").innerHTML="Ganador: Banca";
-         let desactivar=document.getElementById("jugador");
+
+        
         desactivar.style.pointerEvents="none";
-    
+        activarBanco.style.pointerEvents="auto";
+        
 
         }
         
 });
 
-const plantarse=document.getElementById("plantarse");
 
-    //Si hacemos click en plantarse suma los puntos
+    let totalBanca=0;
+    //Si hacemos click en plantarse suma los puntos y empieza a jugar la banca
     plantarse.addEventListener("click", (d) => {
       d.preventDefault();
 
-      let desactivar=document.getElementById("jugador");
+      
       desactivar.style.pointerEvents="none";
+      activarBanco.style.pointerEvents="auto";
+
+
     
-   
+const sacarBanco=document.getElementById("juBanco");
+     
+do{
+  sacarBanco.click(sacarBanco.addEventListener("click", () =>{
+  
+  let numRandow=Math.floor(Math.random() * (conta - 0 + 1));
+  
+  for(let j=0; j<arrayRepetidos.length && salir!=true; j++){
+      
+      if(arrayRepetidos[j].getName()==arrayCartas[numRandow].getName()){
+        
+          let nuevoNum=Math.floor(Math.random() * (conta - 0 + 1));
+
+          getImg=arrayCartas[nuevoNum].getImagen();
+          puntos=arrayCartas[nuevoNum].getPoint();
+          
+          salir=true;
+  }
+}
+
+  if(salir==false){
+       getImg=arrayCartas[numRandow].getImagen();
+       puntos=arrayCartas[numRandow].getPoint();
+  }
+
+  conta--;
+  arrayRepetidos.push(arrayCartas[numRandow]);
+
+  //Creamos un array de puntos 
+  arrayPuntosBanco.push(puntos);
+  
+
+  document.getElementById("volBanco").src=getImg;
+      
+  let divGuardadas = document.getElementById("guardadasBanco");
+  let reinicio=document.getElementById("pruebaBanco");
+
+  let img=document.createElement("img");
+  img.setAttribute("src",getImg);
+  img.setAttribute("width","100");
+  img.setAttribute("height","140");
+  divGuardadas.insertBefore(img, reinicio);
+
+  arrayCartas.splice(numRandow,1);
+
+  for(let k=siguiente; k<arrayPuntosBanco.length; k++){
+          
+      totalBanca=totalBanca+arrayPuntosBanco[k];
+
+  }
+  siguiente++;
+
+  document.getElementById("puntosBanca").innerHTML="Total banca:"+totalBanca;
+
+  if(totalBanca>total && totalBanca<=7.5){
+    document.getElementById("ganador").innerHTML="Ganador: Banca";
+
+    activarBanco.style.pointerEvents="none";
+    desactivar.style.pointerEvents="none";
+
+    }else if(total==totalBanca){
+        document.getElementById("ganador").innerHTML="Ganador: Empate";
+
+        activarBanco.style.pointerEvents="none";
+        desactivar.style.pointerEvents="none";
+    }else{
+        document.getElementById("ganador").innerHTML="Ganador: Jugador";
+
+        activarBanco.style.pointerEvents="none";
+        desactivar.style.pointerEvents="none";
+    }
+  
+    })
+ );
+}while(totalBanca<total);
 });
 
 
 
 
+const reinicio = document.getElementById("reinicio");
 
-const sacarCartaBanco = () =>{
-    
-    let numRandow=Math.floor(Math.random() * (41 - 0 + 1));
+reinicio.addEventListener("click", () =>{
 
-    console.log(numRandow);
-    let getImg=arrayCartas[numRandow].getImagen();
+    location.reload();
 
-    document.getElementById("volBanco").src=getImg;
-          
-    let divGuardadas = document.getElementById("guardadasBanco");
-    let reinicio=document.getElementById("pruebaBanco");
+});
 
-    let img=document.createElement("img");
-    img.setAttribute("src",getImg);
-    img.setAttribute("width","100");
-    img.setAttribute("height","140");
-    divGuardadas.insertBefore(img, reinicio);
+   
 
-    arrayCartas.splice(numRandow,1);
-    
-}
-
- 
 
 
 

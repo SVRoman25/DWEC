@@ -1,5 +1,6 @@
 body{
     text-align: center;
+    background-image: url(imagenes/imagenes/fondo.jpg);
 }
 #cuerpo{
     margin-top: 10px;
@@ -10,23 +11,25 @@ body{
 #izquierda{
     margin-top: 1.7%;
     margin-left: 0;
-    border: 1px solid blue;
+    border: 3px solid blue;
     width: 40%;
     height: auto;
     margin-left: 0;
     position: absolute;
 
 
+
 }
 
 #derecha{
     margin-top: 1.7%;
-    border: 1px solid green;
+    border: 3px solid blue;
     width: 40%;
     height: auto;
     margin-left:41%;
     position: absolute;
-    
+  
+
     
 }
 
@@ -67,6 +70,7 @@ img#jugador{
 
 #juBanco{
     float: left;
+    pointer-events: none;
 }
 
 #volBanco{
@@ -89,7 +93,7 @@ img#volteado{
 
 #reinicio{
     float: left;
-    background-color: green;
+    background-color: red;
     margin-top:5%;
     margin-bottom: 7%;
 
@@ -99,6 +103,10 @@ p{
     margin-bottom: 7%;
     margin-top: 5.5%;
     float: left;
+    font-size: 16px;
+    font-weight: bold;
+    color:whitesmoke;
+  
 }
 
 
