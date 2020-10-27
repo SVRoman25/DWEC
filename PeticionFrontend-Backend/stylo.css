@@ -1,0 +1,56 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #B314CC;
+   
+    
+}
+
+
+form{
+    display: flex;
+    background: #490699 ;
+    height: auto;
+    width: 300px;
+    border: 1px solid black;
+    flex-direction: column;
+    
+    margin: 5px;
+    color: #12D904;
+    font-size: 18px;
+    font-weight: 100;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+}
+
+h2{
+    text-align: center;
+}
+
+
+
+input{
+    width: 200px;
+    margin-bottom: 10%;
+    padding: 5px;
+    background-color: white;
+  
+}
+
+#enviar{
+   
+    display: flex;
+    width: 300px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#enviar input{
+    width: 85px;
+    justify-content: space-around;
+}
+
+#dni2{
+   
+}
+
